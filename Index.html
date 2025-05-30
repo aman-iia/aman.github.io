@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman Kumar - Astrophysicist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item:hover {
+            background: rgba(138, 43, 226, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: #2d1b69;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #8a2be2, #4169e1);
+            border-radius: 3px;
+        }
+
+        .education-item, .experience-item, .award-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(138, 43, 226, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #8a2be2;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover, .experience-item:hover, .award-item:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: translateX(10px);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .institution {
+            font-weight: bold;
+            color: #2d1b69;
+            font-size: 1.1rem;
+        }
+
+        .degree {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .duration {
+            color: #8a2be2;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .location {
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .description {
+            margin-top: 10px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: rgba(138, 43, 226, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #2d1b69;
+            margin-bottom: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #8a2be2;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #6a1a9a;
+            transform: scale(1.05);
+        }
+
+        .research-focus {
+            background: linear-gradient(135deg, #8a2be2, #4169e1);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .research-focus h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .research-focus h2::after {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .item-header {
+                flex-direction: column;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <div class="profile-content">
+                <h1>Aman Kumar</h1>
+                <p class="subtitle">PhD Astrophysics Student</p>
+                <p class="subtitle">Indian Institute of Astrophysics, Bengaluru</p>
+                <div class="contact-info">
+                    <a href="tel:+919816112467" class="contact-item">📞 +91-9816112467</a>
+                    <a href="mailto:aman.kumar@iiap.res.in" class="contact-item">✉️ aman.kumar@iiap.res.in</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="research-focus">
+            <h2>Research Focus</h2>
+            <p>Specializing in formation and evolution of cosmic dust in diverse supernova explosions and radiative transfer modeling using JWST IR observations.</p>
+        </div>
+
+        <section class="section">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <div class="institution">Indian Institute of Astrophysics</div>
+                        <div class="degree">PhD in Astrophysics</div>
+                        <div class="location">Bengaluru, India</div>
+                    </div>
+                    <div class="duration">Aug 2024–Present</div>
+                </div>
+                <div class="description">
+                    <strong>Topic:</strong> Assessing the Impact of Supernovae as Primary Dust Producers in Galaxies<br>
+                    <strong>Advisor:</strong> Dr. Arkaprabha Sarangi
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <div class="institution">Indian Institute of Technology Guwahati</div>
+                        <div class="degree">M.Sc. in Physics | CGPA: 7.63</div>
+                        <div class="location">Guwahati, India</div>
+                    </div>
+                    <div class="duration">2021–2023</div>
+                </div>
+                <div class="description">
+                    <strong>Thesis:</strong> Heavy Quark Production and Parton Distribution Function Uncertainties (LO)<br>
+                    <strong>Advisor:</strong> Dr. M.C. Kumar
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <div class="institution">Central University of Himachal Pradesh</div>
+                        <div class="degree">B.Sc.(Hons.) in Physics | CGPA: 8.37</div>
+                        <div class="location">Himachal Pradesh, India</div>
+                    </div>
+                    <div class="duration">2018–2021</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Research Experience</h2>
+            
+            <div class="experience-item">
+                <div class="item-header">
+                    <div>
+                        <div class="institution">Indian Institute of Astrophysics</div>
+                        <div class="degree">PhD Scholar</div>
+                        <div class="location">Bengaluru, India</div>
+                    </div>
+                    <div class="duration">2024–Present</div>
+                </div>
+                <div class="description">
+                    <strong>Project:</strong> Assessing the Impact of Supernovae as Primary Dust Producers in Galaxies<br>
+                    <strong>Advisor:</strong> Dr. Arkaprabha Sarangi
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-header">
+                    <div>
+                        <div class="institution">Indian Institute of Technology Guwahati</div>
+                        <div class="degree">Masters Thesis Research</div>
+                        <div class="location">Guwahati, India</div>
+                    </div>
+                    <div class="duration">2022–2023</div>
+                </div>
+                <div class="description">
+                    <strong>Project:</strong> Heavy Quark Production and related uncertainties<br>
+                    <strong>Advisor:</strong> Dr. M.C. Kumar<br>
+                    Analytical study of heavy quark production mechanism in LHC and quantified the uncertainties related to PDFs.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-header">
+                    <div>
+                        <div class="institution">Central University of Himachal Pradesh</div>
+                        <div class="degree">Research Intern</div>
+                        <div class="location">Dharamshala, India</div>
+                    </div>
+                    <div class="duration">Summer 2022</div>
+                </div>
+                <div class="description">
+                    <strong>Project:</strong> Study of Metallicity of absorber at z<sub>abs</sub> = 1.3650 toward QSO PKS0237-23<br>
+                    <strong>Advisor:</strong> Prof. Hum Chand<br>
+                    Observational Study of an ISM at Z<sub>abs</sub> = 1.365 toward QSO PKS0237-23 for its metallicity using VoigtFit.
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Honors and Awards</h2>
+            
+            <div class="award-item">
+                <div class="item-header">
+                    <div class="institution">CSIR-JRF Fellowship</div>
+                    <div class="duration">2023</div>
+                </div>
+            </div>
+
+            <div class="award-item">
+                <div class="item-header">
+                    <div class="institution">GATE Examination (Physics) - Qualified</div>
+                    <div class="duration">2024</div>
+                </div>
+            </div>
+
+            <div class="award-item">
+                <div class="item-header">
+                    <div class="institution">MUKHYA MANTRI PROTSAHAN YOJANA</div>
+                    <div class="duration">2022</div>
+                </div>
+                <div class="description">Awarded by Himachal Pradesh Government</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Scilab</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Astropy</span>
+                        <span class="skill-tag">LaTeX</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Scientific Writing</span>
+                        <span class="skill-tag">Presentation Skills</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 100;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s elegant';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
